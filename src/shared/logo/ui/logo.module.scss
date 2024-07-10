@@ -1,0 +1,8 @@
+@import "../../../app/styles/vars";
+.wrapper{
+    font-size: 1.7rem;
+    .icon{
+        transform: translateY(5px);
+        color: $accent-color;
+    }
+}
