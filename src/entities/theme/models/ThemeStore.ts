@@ -1,16 +1,20 @@
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, observable } from 'mobx';
 import { Themes } from '../types';
+import { makePersistable } from 'mobx-persist-store';
 
 export class ThemeStore {
-  _theme: Themes = Themes.Dark;
+  theme: Themes = Themes.Dark;
   constructor() {
     makeAutoObservable(this);
+    makePersistable(this, {
+      name: 'ThemeStore',
+      properties: ['theme'],
+      storage: window.localStorage,
+    });
   }
-  get theme() {
-    return this._theme;
-  }
+
   toggleTheme = () => {
-    this._theme = this._theme === Themes.Light ? Themes.Dark : Themes.Light;
+    this.theme = this.theme === Themes.Light ? Themes.Dark : Themes.Light;
   };
 }
 

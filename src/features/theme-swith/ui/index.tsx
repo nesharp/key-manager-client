@@ -6,14 +6,16 @@ import { observer } from 'mobx-react-lite';
 import { FC } from 'react';
 
 export const ThemeSwitch: FC = observer(() => {
+  const { theme, toggleTheme } = themeStore;
   return (
     <div>
+      {theme === Themes.Light ? 'Light' : 'Dark'}
       <SwithWithIcons
         leftSideIcon={<Sun />}
         rightSideIcon={<Moon />}
-        checked={themeStore.theme === Themes.Light}
+        checked={theme === Themes.Light}
         setChecked={() => {
-          themeStore.toggleTheme();
+          toggleTheme();
         }}
       />
     </div>
