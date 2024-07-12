@@ -9,14 +9,11 @@ export const ThemeSwitch: FC = observer(() => {
   const { theme, toggleTheme } = themeStore;
   return (
     <div>
-      {theme === Themes.Light ? 'Light' : 'Dark'}
       <SwithWithIcons
-        leftSideIcon={<Sun />}
-        rightSideIcon={<Moon />}
+        LeftSideIcon={Sun}
+        RightSideIcon={Moon}
         checked={theme === Themes.Light}
-        setChecked={() => {
-          toggleTheme();
-        }}
+        setChecked={toggleTheme}
       />
     </div>
   );

@@ -1,12 +1,14 @@
-// backgrounds
-$bg-color: #000000;
-$secondary-bg-color: #1E1E1E;
-// text colors
-$primary-text-color:#FFFFFF;
-$secondary-text-color:#7A7A7A;
-// accent colors
+//colors
 $accent-color:#3AC250;
-// border color
-$border-color:#151515;
-
-// font
+// ---dark---
+$dark-bg-color: #000000;
+$dark-secondary-bg-color: #1E1E1E;
+$dark-primary-text-color:#FFFFFF;
+$dark-secondary-text-color:#7A7A7A;
+$dark-border-color:#151515;
+//---light---
+$light-bg-color: #E1E1E1;
+$light-secondary-bg-color: #F5F5F5;
+$light-primary-text-color:#000000;
+$light-secondary-text-color:#7A7A7A;
+$light-border-color:#D5D5D5;
