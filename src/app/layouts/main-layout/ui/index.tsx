@@ -1,7 +1,7 @@
 import styles from './main-layout.module.scss';
 import cn from 'classnames';
 import { ubuntu } from '../models/fonts/ubuntu';
-import { Header } from '@/src/widgets';
+import { Header } from '@/src/widgets/header';
 export const MainLayout = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {

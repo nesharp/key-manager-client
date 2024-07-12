@@ -1,4 +1,5 @@
-import { ConfigProvider, theme } from "antd";
+'use client';
+import { ConfigProvider, theme } from 'antd';
 
 export const AntdProvider = ({ children }: { children: React.ReactNode }) => {
   return (

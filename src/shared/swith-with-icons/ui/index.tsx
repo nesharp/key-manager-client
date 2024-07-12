@@ -1,8 +1,9 @@
-import { Switch } from 'antd';
+'use client';
 import styles from './swith-with-icons.module.scss';
 import { Moon, Sun } from 'lucide-react';
 import { Dispatch, SetStateAction } from 'react';
 import cn from 'classnames';
+import { Switch } from 'antd';
 interface Props {
   leftSideIcon: React.ReactNode;
   rightSideIcon: React.ReactNode;
@@ -18,7 +19,7 @@ export const SwithWithIcons = ({
   classNames,
 }: Props) => {
   return (
-    <div className={cn(classNames, styles.swith)}>
+    <div className={cn(styles.wrapper)}>
       <Switch
         className={styles.switch}
         checkedChildren={<Sun className={styles.rightSideIcon} />}
