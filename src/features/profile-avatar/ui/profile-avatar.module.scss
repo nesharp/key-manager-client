@@ -1,0 +1,19 @@
+.wrapper{
+  padding: 1px 7px 1px 10px;
+  width: fit-content;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:8px;
+  border-radius: 40px;
+  background-color: var(--secondary-bg-color);
+  .image{
+    width: auto;
+    height: 80%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-color);
+    cursor: pointer;
+  }
+}

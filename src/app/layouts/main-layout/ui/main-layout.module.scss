@@ -1,17 +1,6 @@
-@import "../../../styles/vars";
 .wrapper{
-    background-color:  black;
     height: 100vh;
-}
-.light{
-   
-    background-color: $light-bg-color;
-    color: $light-primary-text-color;
-    border-color: $light-border-color;
-    
-}
-.dark{
-    background-color: $dark-bg-color;
-    color: $dark-primary-text-color;
-    border-color: $dark-border-color;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
 }
