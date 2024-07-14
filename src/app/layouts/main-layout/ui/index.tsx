@@ -5,22 +5,11 @@ import { ubuntu } from '../models/fonts/ubuntu';
 import { Header } from '@/src/widgets/header';
 import {themeStore } from '@/src/entities/theme';
 import { observer } from 'mobx-react-lite';
-import { useEffect } from 'react';
+import { useThemeVariablesComplete } from '../hooks/useThemeVariablesComplete';
 export const MainLayout = observer(
   ({ children }: Readonly<{ children: React.ReactNode }>) => {
     const { theme } = themeStore;
-    useEffect(() => {
-      const bgColor = `var(--${theme}-bg)`;
-      const secondaryBgColor = `var(--${theme}-secondary-bg)`;
-      const textColor = `var(--${theme}-text-color)`;
-      const secondaryTextColor = `var(--${theme}-secondary-text-color)`;
-      const borderColor = `var(--${theme}-border-color)`;
-      document.body.style.setProperty('--bg-color', bgColor)
-      document.body.style.setProperty('--secondary-bg-color', secondaryBgColor)
-      document.body.style.setProperty('--text-color', textColor)
-      document.body.style.setProperty('--secondary-text-color', secondaryTextColor)
-      document.body.style.setProperty('--border-color', borderColor)
-    }, [theme]);
+    useThemeVariablesComplete(theme);
     return (
       <div
         className={cn(
