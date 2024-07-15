@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './reset.css';
-import './global.css'
-import { AntdProvider } from '@/src/app/providers/antd-provider';
+import './global.css';
+import { AntdProvider } from '@/(src)/app/providers/antd-provider';
 export const metadata: Metadata = {
   title: 'sharp.keys',
   description: 'Key management for the modern web developer',
