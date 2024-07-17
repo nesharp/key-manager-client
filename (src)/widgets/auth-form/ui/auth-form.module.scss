@@ -10,13 +10,15 @@
     position: relative;
     .movable{
         position: absolute;
-        width: 47%;
+        width: 50%;
         height: 92%;
         background-image: url("https://img.freepik.com/premium-photo/modern-modern-desktop-background-flat-designs-hd-wallpaper-hd-wallpaper-47_910325-5858.jpg");
         border-radius: 15px;
         display: flex;
         justify-content: right;
         align-items: end;
+        left: 20px;
+        transition: all .4s ease-in-out;
         p{
             color: var(--text-color);
             font-size: 3.3rem;
@@ -28,14 +30,15 @@
         }
     }
     .right{
-        left: calc(80vw - 47% + 20px);
+        left: calc(50% - 20px);        
     }
+   
 }
 @media screen and (max-width: 768px){
-    .authForm{
-        width: 90%;
-    }
     .movable{
+        display: none!important;
+    }
+    .disabled{
         display: none!important;
     }
 } 

@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import classNames from 'classnames';
 import { getBannerMove } from '../animations';
 import { Tabs } from '../types';
+import { RegisterForm } from './RegisterForm';
 const montserrat = Montserrat({
   weight: ['400', '700'],
   subsets: ['latin-ext'],
@@ -16,17 +17,27 @@ export const AuthWidget = () => {
   return (
     <div className={styles.authForm}>
       <LoginForm
-        disabled={tab !== 'login'}
+        disabled={tab !== Tabs.Login}
         registerButtonClicked={() => {
           setTab(Tabs.Register);
         }}
+        classNames={tab !== Tabs.Login ? styles.disabled : ''}
       />
-      <motion.div
-        className={classNames(styles.movable)}
-        animate={getBannerMove(tab)}
+      <RegisterForm
+        disabled={tab !== Tabs.Register}
+        loginButtonClicked={() => {
+          setTab(Tabs.Login);
+        }}
+        classNames={tab !== Tabs.Register ? styles.disabled : ''}
+      />
+      <div
+        className={classNames(
+          styles.movable,
+          tab === Tabs.Login && styles.right
+        )}
       >
         <p className={montserrat.className}>Move it to next level</p>
-      </motion.div>
+      </div>
     </div>
   );
 };

@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    overflow-y: scroll;
     h3{
         margin-top: 20px;
         font-weight: 400;
@@ -19,13 +20,13 @@
         input{
             margin-top: 5px;
         }
-        .loginButton{
+        .registerButton{
             width: 80%;
             margin: 20px auto 0 auto;
         }
         
     }
-    .registerLink{
+    .loginLink{
         color:var(--accent-color);
 
         &:hover{
