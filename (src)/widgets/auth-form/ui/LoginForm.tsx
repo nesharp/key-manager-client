@@ -3,9 +3,10 @@ import { Ubuntu } from 'next/font/google';
 import styles from './login-form.module.scss';
 import { Button, Input } from 'antd';
 import cn from 'classnames';
-import { Controller, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
+import { Controller } from 'react-hook-form';
+import { useLoginForm } from '../hooks/useLoginForm';
+import { onLogin } from '../handlers';
+import { useState } from 'react';
 const ubuntu = Ubuntu({
   weight: ['400'],
   subsets: ['latin'],
@@ -15,37 +16,24 @@ interface Props {
   registerButtonClicked: () => void;
   classNames?: string;
 }
-const formSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8),
-});
-const onSubmit = (data: any) => {
-  console.log(data);
-};
 
 export const LoginForm = ({
   disabled,
   registerButtonClicked,
   classNames,
 }: Props) => {
+  const [isLoading, setIsLoading] = useState(false);
   const {
-    register,
     handleSubmit,
-    formState: { errors },
     control,
-  } = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: '',
-      password: '',
-    },
-  });
+    formState: { errors },
+  } = useLoginForm();
   return (
     <div className={cn(styles.wrapper, classNames)}>
       <h3 className={ubuntu.className}>Login</h3>
       <form
         className={cn(styles.form, ubuntu.className)}
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit((data) => onLogin(data, setIsLoading))}
       >
         <div>
           <p>Login</p>
@@ -81,6 +69,7 @@ export const LoginForm = ({
           className={styles.loginButton}
           disabled={disabled}
           htmlType="submit"
+          loading={isLoading}
         >
           Login
         </Button>

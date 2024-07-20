@@ -2,6 +2,8 @@ import { Ubuntu } from 'next/font/google';
 import styles from './register-form.module.scss';
 import cn from 'classnames';
 import { Button, Input } from 'antd';
+import { useRegisterForm } from '../hooks/useRegisterForm';
+import { useState } from 'react';
 const ubuntu = Ubuntu({
   weight: ['400'],
   subsets: ['latin'],
@@ -17,6 +19,12 @@ export const RegisterForm = ({
   loginButtonClicked,
   classNames,
 }: Props) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useRegisterForm();
   return (
     <div className={cn(styles.wrapper, classNames)}>
       <h3 className={ubuntu.className}>Register</h3>
@@ -35,7 +43,7 @@ export const RegisterForm = ({
           <Input placeholder="Doe" />
         </div>
         <div>
-          <p>Name:</p>
+          <p>Email:</p>
           <Input placeholder="example@example.com" />
         </div>
         <div>
@@ -46,7 +54,11 @@ export const RegisterForm = ({
           <p>Password</p>
           <Input placeholder="12345678" />
         </div>
-        <Button className={styles.registerButton} disabled={disabled}>
+        <Button
+          className={styles.registerButton}
+          disabled={disabled}
+          loading={isLoading}
+        >
           Register
         </Button>
       </form>

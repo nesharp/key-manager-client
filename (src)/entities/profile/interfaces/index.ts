@@ -1,9 +1,9 @@
-export interface ILoginResponse {
+
+export interface IProfile {
   user: User;
   session: Session;
 }
-export interface IRegisterResponse extends User {}
-export interface User {
+interface User {
   id: number;
   avatarUrl: string;
   email: string;
@@ -14,7 +14,7 @@ export interface User {
   applications: any[];
 }
 
-export interface Session {
+interface Session {
   id: number;
   sessionToken: string;
   ipAddress: string;

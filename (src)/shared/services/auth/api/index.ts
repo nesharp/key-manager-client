@@ -14,7 +14,7 @@ class AuthService extends ServiceBase {
       return response.data;
     } catch (error) {
       console.log('Error from AuthService:', error);
-      throw error;
+      return null;
     }
   }
   public async Register(data: {
@@ -33,7 +33,7 @@ class AuthService extends ServiceBase {
       return response.data;
     } catch (error) {
       console.log('Error from AuthService', error);
-      throw error;
+      return null;
     }
   }
   public async Logout({ token }: { token: string }) {
@@ -46,7 +46,7 @@ class AuthService extends ServiceBase {
       });
     } catch (error) {
       console.log('Error from AuthService', error);
-      throw error;
+      return null;
     }
   }
 }
