@@ -3,6 +3,7 @@ import { notification } from 'antd';
 import { LoginFormType } from '../hooks/useLoginForm';
 import { profileModel } from '@/(src)/entities/profile/models/ProfileModel';
 import { Dispatch, SetStateAction } from 'react';
+import { RegisterFormType } from '../hooks/useRegisterForm';
 export const onLogin = async (
   data: LoginFormType,
   setIsLoading: Dispatch<SetStateAction<boolean>>
@@ -31,4 +32,25 @@ export const onLogin = async (
   });
 };
 
-export const onRegister = async () => {};
+export const onRegister = async (
+  data: RegisterFormType,
+  setIsLoading: Dispatch<SetStateAction<boolean>>
+): Promise<void> => {
+  console.log(data);
+  // setIsLoading(true);
+  // const response = await authService.Register(data);
+  // setIsLoading(false);
+  // if (!response) {
+  //   notification.open({
+  //     type: 'error',
+  //     message: 'Oops!',
+  //     description: 'Something went wrong',
+  //   });
+  //   return;
+  // }
+  // notification.open({
+  //   message: 'Success',
+  //   description: 'You are registered.',
+  //   type: 'success',
+  // });
+};

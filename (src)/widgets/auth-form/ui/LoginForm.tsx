@@ -58,6 +58,7 @@ export const LoginForm = ({
             render={({ field }) => (
               <Input
                 placeholder="12345678"
+                type="password"
                 onChange={field.onChange}
                 value={field.value}
                 status={errors.password && 'error'}
