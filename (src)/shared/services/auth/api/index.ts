@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { ServiceBase } from '../../api/ServiceBase';
 import { ILoginResponse, IRegisterResponse } from '../types';
 
@@ -5,6 +6,7 @@ class AuthService extends ServiceBase {
   public async Login({ email, password }: { email: string; password: string }) {
     try {
       const response = await this._axios<ILoginResponse>({
+        method: 'POST',
         url: '/auth/login',
         data: {
           email,
@@ -27,6 +29,7 @@ class AuthService extends ServiceBase {
   }) {
     try {
       const response = await this._axios<IRegisterResponse>({
+        method: 'POST',
         url: '/auth/register',
         data,
       });
@@ -39,6 +42,7 @@ class AuthService extends ServiceBase {
   public async Logout({ token }: { token: string }) {
     try {
       this._axios({
+        method: 'POST',
         url: 'auth/logout',
         headers: {
           Authorization: token,

@@ -4,15 +4,17 @@ import { User } from '@/(src)/shared/services/auth';
 
 class ProfileModel {
   user: User | null = null;
-  token: string = '';
+  token: string | null = null;
   constructor() {
     makeAutoObservable(this);
     makePersistable(this, {
       name: 'token',
       properties: ['token'],
+      storage: window?.localStorage,
     });
   }
   public setProfile({ user, token }: { user: User; token: string }) {
+    console.log('setProfile', user, token);
     this.user = user;
     this.token = token;
   }

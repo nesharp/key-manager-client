@@ -36,21 +36,20 @@ export const onRegister = async (
   data: RegisterFormType,
   setIsLoading: Dispatch<SetStateAction<boolean>>
 ): Promise<void> => {
-  console.log(data);
-  // setIsLoading(true);
-  // const response = await authService.Register(data);
-  // setIsLoading(false);
-  // if (!response) {
-  //   notification.open({
-  //     type: 'error',
-  //     message: 'Oops!',
-  //     description: 'Something went wrong',
-  //   });
-  //   return;
-  // }
-  // notification.open({
-  //   message: 'Success',
-  //   description: 'You are registered.',
-  //   type: 'success',
-  // });
+  setIsLoading(true);
+  const response = await authService.Register(data);
+  setIsLoading(false);
+  if (!response) {
+    notification.open({
+      type: 'error',
+      message: 'Oops!',
+      description: 'Something went wrong',
+    });
+    return;
+  }
+  notification.open({
+    message: 'Success',
+    description: 'You are registered.',
+    type: 'success',
+  });
 };

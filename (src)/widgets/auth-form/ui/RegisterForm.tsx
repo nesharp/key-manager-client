@@ -142,7 +142,7 @@ export const RegisterForm = ({
         className={styles.loginLink}
         onClick={loginButtonClicked}
       >
-        Hanv`t account? Register
+        Already have an account? Login
       </Button>
     </div>
   );
