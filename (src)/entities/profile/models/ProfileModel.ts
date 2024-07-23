@@ -7,9 +7,9 @@ class ProfileModel {
   token: string | null = null;
   constructor() {
     makeAutoObservable(this);
-      if(typeof window !== "underfined"){
-        makePersistable(this, {
-        name: 'token',
+    if (typeof window !== 'undefined') {
+      makePersistable(this, {
+        name: 'TokenStore',
         properties: ['token'],
         storage: window?.localStorage,
       });
