@@ -7,21 +7,22 @@ class ProfileModel {
   token: string | null = null;
   constructor() {
     makeAutoObservable(this);
-    makePersistable(this, {
-      name: 'token',
-      properties: ['token'],
-      storage: window?.localStorage,
-    });
+      if(typeof window !== "underfined"){
+        makePersistable(this, {
+        name: 'token',
+        properties: ['token'],
+        storage: window?.localStorage,
+      });
+    }
   }
-  public setProfile({ user, token }: { user: User; token: string }) {
-    console.log('setProfile', user, token);
+  setProfile = (user: User, token: string) => {
     this.user = user;
     this.token = token;
-  }
+  };
 
   public clearProfile = () => {
     this.user = null;
-    this.token = '';
+    this.token = null;
   };
 }
 export const profileModel = new ProfileModel();
