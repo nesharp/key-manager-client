@@ -10,12 +10,13 @@ class ProfileModel {
     if (typeof window !== 'undefined') {
       makePersistable(this, {
         name: 'TokenStore',
-        properties: ['token'],
+        properties: ['token', 'user'],
         storage: window?.localStorage,
       });
     }
   }
   setProfile = (user: User, token: string) => {
+    console.log('from profileModel', user, token);
     this.user = user;
     this.token = token;
   };

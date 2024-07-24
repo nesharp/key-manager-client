@@ -1,19 +1,20 @@
-.wrapper{
-    height: 80px;
-    border-bottom: 3px solid;
-    border-bottom-color: inherit;
+.wrapper {
+  height: 80px;
+  border-bottom: 3px solid;
+  border-bottom-color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background-color: var(--bg-color);
+  .rightGroup {
     display: flex;
+    gap: 15px;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    background-color: var(--bg-color);
-    .rightGroup{
-        display: flex;
-        gap:15px;
-        align-items: center;
-        justify-content: center;
-        .themeSwitchWrapper{
-            padding: 0 8px;
-        }
+    justify-content: center;
+    .themeSwitchWrapper {
+      padding: 0 8px;
     }
+  }
 }
+
