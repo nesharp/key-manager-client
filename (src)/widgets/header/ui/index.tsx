@@ -1,3 +1,4 @@
+'use client';
 import { FC } from 'react';
 import styles from './header.module.scss';
 import { Logo } from '@/(src)/shared/logo';
@@ -15,7 +16,7 @@ export const Header: FC = observer(() => {
         <div className={styles.themeSwitchWrapper}>
           <ThemeSwitch />
         </div>
-        <ProfileAvatar profile={profile} />
+        <ProfileAvatar user={profile?.user || null} />
       </div>
     </div>
   );

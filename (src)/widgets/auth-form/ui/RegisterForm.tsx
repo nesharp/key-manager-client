@@ -4,9 +4,10 @@ import styles from './register-form.module.scss';
 import cn from 'classnames';
 import { Button, Input } from 'antd';
 import { useRegisterForm } from '../hooks/useRegisterForm';
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { onRegister } from '../handlers';
 import { Controller } from 'react-hook-form';
+import { type Tabs } from '../types';
 const ubuntu = Ubuntu({
   weight: ['400'],
   subsets: ['latin'],
@@ -15,12 +16,14 @@ interface Props {
   disabled: boolean;
   loginButtonClicked: () => void;
   classNames?: string;
+  setTab: Dispatch<SetStateAction<Tabs>>;
 }
 
 export const RegisterForm = ({
   disabled,
   loginButtonClicked,
   classNames,
+  setTab,
 }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -34,7 +37,9 @@ export const RegisterForm = ({
       <h3 className={ubuntu.className}>Register</h3>
       <form
         className={cn(styles.form, ubuntu.className)}
-        onSubmit={handleSubmit((data) => onRegister(data, setIsLoading))}
+        onSubmit={handleSubmit((data) =>
+          onRegister(data, setIsLoading, setTab)
+        )}
       >
         <div>
           <p>First name:</p>

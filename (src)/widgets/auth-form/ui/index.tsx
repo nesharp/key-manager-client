@@ -2,18 +2,28 @@
 import { Montserrat } from 'next/font/google';
 import styles from './auth-form.module.scss';
 import { LoginForm } from './LoginForm';
-import { useState } from 'react';
-import { motion } from 'framer-motion';
 import classNames from 'classnames';
-import { getBannerMove } from '../animations';
 import { Tabs } from '../types';
 import { RegisterForm } from './RegisterForm';
+import { useAuthTab } from '../hooks/useAuthTab';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { profileModel } from '@/(src)/entities/profile/models/ProfileModel';
 const montserrat = Montserrat({
   weight: ['400', '700'],
   subsets: ['latin-ext'],
 });
 export const AuthWidget = () => {
-  const [tab, setTab] = useState<Tabs>(Tabs.Login);
+  const { tab, setTab } = useAuthTab();
+  const router = useRouter();
+  useEffect(() => {
+    //TODO;rework it to useProfile custom hook
+    const { token } = profileModel;
+    if (token) {
+      router.push('/');
+    }
+  });
+
   return (
     <div className={styles.authForm}>
       <LoginForm
@@ -28,6 +38,7 @@ export const AuthWidget = () => {
         loginButtonClicked={() => {
           setTab(Tabs.Login);
         }}
+        setTab={setTab}
         classNames={tab !== Tabs.Register ? styles.disabled : ''}
       />
       <div

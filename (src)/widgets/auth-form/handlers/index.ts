@@ -4,9 +4,11 @@ import { LoginFormType } from '../hooks/useLoginForm';
 import { profileModel } from '@/(src)/entities/profile/models/ProfileModel';
 import { Dispatch, SetStateAction } from 'react';
 import { RegisterFormType } from '../hooks/useRegisterForm';
+import { Tabs } from '../types';
 export const onLogin = async (
   data: LoginFormType,
-  setIsLoading: Dispatch<SetStateAction<boolean>>
+  setIsLoading: Dispatch<SetStateAction<boolean>>,
+  router: any
 ): Promise<void> => {
   setIsLoading(true);
   const response = await authService.Login(data);
@@ -21,20 +23,19 @@ export const onLogin = async (
     clearProfile();
     return;
   }
-  setProfile({
-    user: response.user,
-    token: response.session.sessionToken,
-  });
+  setProfile(response.user, response.token);
   notification.open({
     message: 'Success',
     description: 'You are logged in.',
     type: 'success',
   });
+  router.push('/');
 };
 
 export const onRegister = async (
   data: RegisterFormType,
-  setIsLoading: Dispatch<SetStateAction<boolean>>
+  setIsLoading: Dispatch<SetStateAction<boolean>>,
+  setTab: Dispatch<SetStateAction<Tabs>>
 ): Promise<void> => {
   setIsLoading(true);
   const response = await authService.Register(data);
@@ -47,6 +48,7 @@ export const onRegister = async (
     });
     return;
   }
+  setTab(Tabs.Login);
   notification.open({
     message: 'Success',
     description: 'You are registered.',

@@ -1,6 +1,6 @@
 export interface ILoginResponse {
   user: User;
-  session: Session;
+  token: string;
 }
 export interface IRegisterResponse extends User {}
 export interface User {

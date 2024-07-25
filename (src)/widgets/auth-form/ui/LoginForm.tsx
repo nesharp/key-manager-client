@@ -6,7 +6,8 @@ import cn from 'classnames';
 import { Controller } from 'react-hook-form';
 import { useLoginForm } from '../hooks/useLoginForm';
 import { onLogin } from '../handlers';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 const ubuntu = Ubuntu({
   weight: ['400'],
   subsets: ['latin'],
@@ -22,6 +23,10 @@ export const LoginForm = ({
   registerButtonClicked,
   classNames,
 }: Props) => {
+  const router = useRouter();
+  useEffect(() => {
+    console.log(router);
+  });
   const [isLoading, setIsLoading] = useState(false);
   const {
     handleSubmit,
@@ -33,10 +38,11 @@ export const LoginForm = ({
       <h3 className={ubuntu.className}>Login</h3>
       <form
         className={cn(styles.form, ubuntu.className)}
-        onSubmit={handleSubmit((data) => onLogin(data, setIsLoading))}
+        onSubmit={handleSubmit((data) => onLogin(data, setIsLoading, router))}
       >
         <div>
           <p>Login</p>
+
           <Controller
             control={control}
             name="email"
