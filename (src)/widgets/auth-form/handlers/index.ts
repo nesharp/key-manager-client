@@ -5,10 +5,11 @@ import { profileModel } from '@/(src)/entities/profile/models/ProfileModel';
 import { Dispatch, SetStateAction } from 'react';
 import { RegisterFormType } from '../hooks/useRegisterForm';
 import { Tabs } from '../types';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 export const onLogin = async (
   data: LoginFormType,
   setIsLoading: Dispatch<SetStateAction<boolean>>,
-  router: any
+  router: AppRouterInstance
 ): Promise<void> => {
   setIsLoading(true);
   const response = await authService.Login(data);
