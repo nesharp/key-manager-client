@@ -1,7 +1,7 @@
 import { authService } from '@/(src)/shared/services/auth';
 import { notification } from 'antd';
 import { LoginFormType } from '../hooks/useLoginForm';
-import { profileModel } from '@/(src)/entities/profile/models/ProfileModel';
+import { profileModel } from '@/(src)/entities/profile';
 import { Dispatch, SetStateAction } from 'react';
 import { RegisterFormType } from '../hooks/useRegisterForm';
 import { Tabs } from '../types';

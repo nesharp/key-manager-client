@@ -6,22 +6,17 @@ import classNames from 'classnames';
 import { Tabs } from '../types';
 import { RegisterForm } from './RegisterForm';
 import { useAuthTab } from '../hooks/useAuthTab';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { profileModel } from '@/(src)/entities/profile/models/ProfileModel';
+import { useAuthRedirect } from '@/(src)/entities/profile';
 const montserrat = Montserrat({
   weight: ['400', '700'],
   subsets: ['latin-ext'],
 });
 export const AuthWidget = () => {
   const { tab, setTab } = useAuthTab();
-  const router = useRouter();
-  useEffect(() => {
-    //TODO;rework it to useProfile custom hook
-    const { token } = profileModel;
-    if (token) {
-      router.push('/');
-    }
+
+  useAuthRedirect({
+    redirectTo: '/home',
+    redirectWhen: 'authorized',
   });
 
   return (

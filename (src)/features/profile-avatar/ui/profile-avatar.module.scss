@@ -11,10 +11,10 @@
   .image {
     width: auto;
     height: 80%;
+    aspect-ratio: 1/1;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--accent-color);
     cursor: pointer;
   }
 }
-
