@@ -2,8 +2,10 @@
 import { User } from '@/(src)/shared/services/auth';
 import styles from './profile-avatar.module.scss';
 import { useEffect, useState } from 'react';
-import { isValidUrl } from '@/(src)/shared/utils';
 import { User as UserIcon } from 'lucide-react';
+import { Avatar, Dropdown } from 'antd';
+import { profileMenuItems } from '../constants';
+
 interface Props {
   user: User | null;
 }
@@ -20,13 +22,13 @@ export const ProfileAvatar = ({ user }: Props) => {
       <div className={styles.name}>
         {userState.firstName} {userState.lastName}
       </div>
-      <button className={styles.image}>
-        {isValidUrl(userState.avatarUrl) ? (
-          <img src={userState.avatarUrl} alt="avatar" />
-        ) : (
-          <UserIcon size={20} />
-        )}
-      </button>
+      <Dropdown menu={{ items: profileMenuItems }}>
+        <Avatar
+          src={userState.avatarUrl}
+          icon={<UserIcon />}
+          className={styles.image}
+        />
+      </Dropdown>
     </div>
   );
 };
