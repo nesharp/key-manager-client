@@ -11,6 +11,7 @@ interface Props {
 }
 export const ProfileAvatar = ({ user }: Props) => {
   const [userState, setUserState] = useState<User | null>();
+
   useEffect(() => {
     setUserState(user);
   }, [user]);

@@ -6,11 +6,13 @@ import { Header } from '@/(src)/widgets/header';
 import { themeStore } from '@/(src)/entities/theme';
 import { observer } from 'mobx-react-lite';
 import { useThemeVariablesComplete } from '../hooks/useThemeVariablesComplete';
-import { useAuthRedirect } from '@/(src)/entities/profile';
+import { useAuthRedirect, useProfileUpdate } from '@/(src)/entities/profile';
+import { Sidebar } from '@/(src)/widgets/sidebar';
 export const MainLayout = observer(
   ({ children }: Readonly<{ children: React.ReactNode }>) => {
     const { theme } = themeStore;
     useThemeVariablesComplete(theme);
+    useProfileUpdate();
     useAuthRedirect({
       redirectTo: '/auth',
       redirectWhen: 'notAuthorized',
@@ -18,7 +20,10 @@ export const MainLayout = observer(
     return (
       <div className={cn(styles.wrapper, ubuntu.className)}>
         <Header />
-        {children}
+        <div className={styles.pageWrapper}>
+          <Sidebar />
+          {children}
+        </div>
       </div>
     );
   }

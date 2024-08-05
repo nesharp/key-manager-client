@@ -1,2 +1,3 @@
-import HomePage from '../page';
+import { HomePage } from '@/(src)/pages/home';
+
 export default HomePage;

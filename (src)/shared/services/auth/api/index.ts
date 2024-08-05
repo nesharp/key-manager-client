@@ -1,7 +1,5 @@
-import axios from 'axios';
 import { ServiceBase } from '../../api/ServiceBase';
 import { ILoginResponse, IRegisterResponse } from '../types';
-
 class AuthService extends ServiceBase {
   public async Login({ email, password }: { email: string; password: string }) {
     try {
@@ -15,6 +13,7 @@ class AuthService extends ServiceBase {
       });
       return response.data;
     } catch (error) {
+      //TODO:delete it after production
       console.log('Error from AuthService:', error);
       return null;
     }
@@ -35,6 +34,7 @@ class AuthService extends ServiceBase {
       });
       return response.data;
     } catch (error) {
+      //TODO:delete it after production
       console.log('Error from AuthService', error);
       return null;
     }
@@ -49,6 +49,7 @@ class AuthService extends ServiceBase {
         },
       });
     } catch (error) {
+      //TODO:delete it after production
       console.log('Error from AuthService', error);
       return null;
     }

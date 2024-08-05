@@ -1,10 +1,11 @@
 'use client';
 import { useAuthRedirect } from '@/(src)/entities/profile';
 
-export default function HomePage() {
+const Page = () => {
   useAuthRedirect({
-    redirectWhen: 'authorized',
     redirectTo: '/home',
+    redirectWhen: 'authorized',
   });
   return <div></div>;
-}
+};
+export default Page;

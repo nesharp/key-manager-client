@@ -1,0 +1,11 @@
+.button {
+  margin: 10px 0;
+  background-color: var(--secondary-bg-color);
+  padding: 5px 5px 2px 5px;
+  border-radius: 7px;
+  transition: 0.3s;
+  &:hover {
+    background-color: rgb(from var(--accent-color) r g b / 0.7);
+    border-radius: 50%;
+  }
+}

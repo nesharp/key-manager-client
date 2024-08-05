@@ -24,7 +24,7 @@ class ProfileModel {
   public clearProfile = () => {
     this.user = null;
     this.token = null;
+    console.log('Profile cleared');
   };
 }
 export const profileModel = new ProfileModel();
-

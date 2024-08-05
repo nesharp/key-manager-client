@@ -1,6 +1,11 @@
-.wrapper{
-    height: 100vh;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    border-color: var(--border-color);
+.wrapper {
+  height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-color: var(--border-color);
+  .pageWrapper {
+    display: flex;
+    //TODO:replace calc to variable or other way to make div for full height
+    height: calc(100% - 83px);
+  }
 }
